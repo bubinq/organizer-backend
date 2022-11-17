@@ -31,7 +31,7 @@ const GoalSchema = new mongoose.Schema(
     },
     labelColor: {
       type: String,
-      default: "Dashboard_purple__vFljD",
+      default: "purple",
     },
   },
   { timestamps: true }

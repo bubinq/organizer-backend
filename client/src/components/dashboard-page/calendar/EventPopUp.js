@@ -1,4 +1,5 @@
 import styles from "../Dashboard.module.css";
+import "../../../App.css";
 
 import { useContext, useState } from "react";
 import CalendarContext from "../../../contexts/CalendarContext";

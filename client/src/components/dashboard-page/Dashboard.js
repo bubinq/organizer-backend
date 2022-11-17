@@ -16,7 +16,8 @@ export const Dashboard = () => {
     goals,
     dispatch,
     displayDuration,
-    isLoading
+    isLoading,
+    resetSelectedGoal
   } = useContext(GoalContext);
   const [showPopUp, setShowPopUp] = useState(false);
 
@@ -24,6 +25,7 @@ export const Dashboard = () => {
   const today = new Date(dayjs().format("MM DD YYYY")).valueOf();
 
   useEffect(() => {
+    resetSelectedGoal()
     checkLastGoalValidation();
     checkGoalIsExpired();
     // eslint-disable-next-line

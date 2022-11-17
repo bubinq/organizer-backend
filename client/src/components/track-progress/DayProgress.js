@@ -13,7 +13,6 @@ export const DayProgress = ({ day, rowIndex }) => {
     let { monthIdx } = useContext(CalendarContext);
     const { displayDuration, selectedGoal, dayProgress } = useContext(GoalContext)
 
-    console.log(selectedGoal);
     let today = dayjs().format('DD MM YYYY');
     let currDay = dayjs(day).format('DD MM YYYY');
 

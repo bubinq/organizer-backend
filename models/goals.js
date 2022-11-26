@@ -12,6 +12,7 @@ const GoalSchema = new mongoose.Schema(
     goal: {
       type: String,
       required: true,
+      default: "Ebi mu maikata",
     },
     duration: {
       type: String,
@@ -23,9 +24,8 @@ const GoalSchema = new mongoose.Schema(
       default: [],
     },
     expiresAt: {
-      type: Date,
+      type: String,
       requried: true,
-      default: new Date()
     },
     isExpired: {
       type: Boolean,

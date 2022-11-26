@@ -71,7 +71,7 @@ export const EventPopUp = () => {
         },
         { withCredentials: true }
       );
-      console.log(displayExpireAt(dayTarget?.$d, goalData.duration), "At Create");
+      console.log(displayExpireAt(dayTarget?.$d, goalData.duration).$d, "At Create");
       const wholeGoal = await axiosInstance.post("/toDos/create", {
         goalId: newGoal.data._id,
         toDos: goalData.toDos.map((todo) =>

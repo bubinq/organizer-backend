@@ -2,12 +2,12 @@ import "./Home.css";
 
 import dayjs from "dayjs";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { stepAnimate } from "./Constants";
 import { LoginModal } from "./LoginModal";
 import { RegisterModal } from "./RegisterModal";
-// import { GoalContext } from "../../contexts/GoalContext";
+import { GoalContext } from "../../contexts/GoalContext";
 
 export const Form = ({
   toggleModal,
@@ -20,7 +20,7 @@ export const Form = ({
 
   const [View, setView] = useState(() => LoginModal);
   const [form, setFormData] = useState({});
-  // const {displayExpireAt} = useContext(GoalContext)
+  const {displayExpireAt} = useContext(GoalContext)
 
   const switchFormHandler = (isLogin) => {
     if (isLogin) {
@@ -44,7 +44,7 @@ export const Form = ({
       goal: goal,
       duration: timeFrame,
       createdAt: today,
-      expiresAt: today + 86400000,
+      expiresAt: displayExpireAt(today, timeFrame).$d,
     };
     console.log(goalData.expiresAt, "At Home Creation");
 

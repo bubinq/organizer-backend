@@ -60,11 +60,12 @@ export const RegisterModal = ({ showModalHandler, switchHandler, form }) => {
             goal: form.goal,
             duration: form.duration,
             createdAt: form.createdAt,
-            expireAt: form.expireAt
+            expiresAt: form.expiresAt
           },
           { withCredentials: true }
         );
       }
+      console.log(form.expiresAt, "at register");
       setErrorMessage("")
       navigate("/dashboard");
     } catch (error) {

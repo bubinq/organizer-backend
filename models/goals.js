@@ -23,7 +23,7 @@ const GoalSchema = new mongoose.Schema(
       default: [],
     },
     expiresAt: {
-      type: Number,
+      type: Date,
       requried: true
     },
     isExpired: {

@@ -44,8 +44,9 @@ export const Form = ({
       goal: goal,
       duration: timeFrame,
       createdAt: today,
-      expireAt: displayExpireAt(today, timeFrame),
+      expiresAt: displayExpireAt(today, timeFrame),
     };
+    console.log(goalData.expiresAt, "At Home Creation");
 
     setFormData({ ...goalData });
 

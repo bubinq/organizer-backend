@@ -59,11 +59,12 @@ export const LoginModal = ({ showModalHandler, switchHandler, form }) => {
             goal: form.goal,
             duration: form.duration,
             createdAt: form.createdAt,
-            expireAt: form.expireAt
+            expiresAt: form.expiresAt
           },
           { withCredentials: true }
         );
       }
+      console.log(form.expiresAt, "at login");
       setErrorMessage("");
       navigateTo("/dashboard");
     } catch (error) {

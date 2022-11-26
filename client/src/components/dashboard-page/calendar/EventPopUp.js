@@ -40,7 +40,7 @@ export const EventPopUp = () => {
               })
           : (isEmpty = true),
       labelColor: selectedLabel.color,
-      expiresAt: displayExpireAt(dayTarget?.$d, data.get("time").trim())
+      expiresAt: displayExpireAt(dayTarget?.$d, data.get("time").trim()).$d
     };
     console.log(goalData.expiresAt, "at dashboard form");
 
@@ -67,7 +67,7 @@ export const EventPopUp = () => {
           duration: goalData.duration,
           labelColor: goalData.labelColor,
           createdAt: dayTarget?.$d,
-          expiresAt: displayExpireAt(dayTarget?.$d, goalData.duration)
+          expiresAt: displayExpireAt(dayTarget?.$d, goalData.duration).$d
         },
         { withCredentials: true }
       );

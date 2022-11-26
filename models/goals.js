@@ -24,7 +24,8 @@ const GoalSchema = new mongoose.Schema(
     },
     expiresAt: {
       type: Date,
-      requried: true
+      requried: true,
+      default: new Date()
     },
     isExpired: {
       type: Boolean,

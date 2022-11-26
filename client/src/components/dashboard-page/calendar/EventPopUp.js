@@ -42,7 +42,6 @@ export const EventPopUp = () => {
       labelColor: selectedLabel.color,
       expiresAt: displayExpireAt(dayTarget?.$d, data.get("time").trim()).$d
     };
-    console.log(goalData.expiresAt, "at dashboard form");
 
     if (isEmpty) {
       ev.target.reset();
@@ -71,7 +70,6 @@ export const EventPopUp = () => {
         },
         { withCredentials: true }
       );
-      console.log(displayExpireAt(dayTarget?.$d, goalData.duration).$d, "At Create");
       const wholeGoal = await axiosInstance.post("/toDos/create", {
         goalId: newGoal.data._id,
         toDos: goalData.toDos.map((todo) =>

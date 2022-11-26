@@ -64,7 +64,6 @@ export const LoginModal = ({ showModalHandler, switchHandler, form }) => {
           { withCredentials: true }
         );
       }
-      console.log(form.expiresAt, "at login");
       setErrorMessage("");
       navigateTo("/dashboard");
     } catch (error) {

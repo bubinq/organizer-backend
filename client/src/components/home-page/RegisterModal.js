@@ -65,7 +65,6 @@ export const RegisterModal = ({ showModalHandler, switchHandler, form }) => {
           { withCredentials: true }
         );
       }
-      console.log(form.expiresAt, "at register");
       setErrorMessage("")
       navigate("/dashboard");
     } catch (error) {

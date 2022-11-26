@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import toDos from "./toDos.js";
+import progress from "./progress.js"
 
 const GoalSchema = new mongoose.Schema(
   {
@@ -21,6 +22,10 @@ const GoalSchema = new mongoose.Schema(
       ref: "ToDo",
       default: [],
     },
+    expiresAt: {
+      type: Number,
+      requried: true
+    },
     isExpired: {
       type: Boolean,
       default: false,
@@ -40,6 +45,7 @@ const GoalSchema = new mongoose.Schema(
 GoalSchema.pre("deleteOne", async function () {
   const doc = await this.model.findOne(this.getFilter());
   await toDos.deleteMany({ goalId: doc._id });
+  await progress.deleteMany({ goalId: doc._id });
 });
 
 export default mongoose.model("Goal", GoalSchema);

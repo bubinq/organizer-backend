@@ -59,7 +59,8 @@ export const RegisterModal = ({ showModalHandler, switchHandler, form }) => {
           {
             goal: form.goal,
             duration: form.duration,
-            createdAt: form.createdAt
+            createdAt: form.createdAt,
+            expireAt: form.expireAt
           },
           { withCredentials: true }
         );

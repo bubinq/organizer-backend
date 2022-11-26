@@ -15,7 +15,7 @@ export const EventPopUp = () => {
   //  Manages Crud Operations
 
   const { popModalHandler, dayTarget } = useContext(CalendarContext);
-  const { dispatch, setHasGoals, hasGoals, dayInfo } = useContext(GoalContext);
+  const { dispatch, setHasGoals, hasGoals, dayInfo, displayExpireAt } = useContext(GoalContext);
 
   const [isUpdating, setIsUpdating] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState(labelsArray[0]);
@@ -40,6 +40,7 @@ export const EventPopUp = () => {
               })
           : (isEmpty = true),
       labelColor: selectedLabel.color,
+      expireAt: displayExpireAt(dayTarget?.$d, data.get("time").trim())
     };
 
     if (isEmpty) {
@@ -65,6 +66,7 @@ export const EventPopUp = () => {
           duration: goalData.duration,
           labelColor: goalData.labelColor,
           createdAt: dayTarget?.$d,
+          expireAt: displayExpireAt(dayTarget?.$d, goalData.duration)
         },
         { withCredentials: true }
       );

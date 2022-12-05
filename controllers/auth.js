@@ -15,6 +15,7 @@ export const login = async (req, res) => {
     const { password, ...details } = user._doc;
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_KEY);
+    console.log(token, "from login");
     res.cookie("accessToken", token, { httpOnly: true });
     res.status(200).json({success: true, details});
   } catch (error) {

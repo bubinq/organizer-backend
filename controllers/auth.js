@@ -15,8 +15,12 @@ export const login = async (req, res) => {
     const { password, ...details } = user._doc;
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_KEY);
-    res.cookie("accessToken", token, { httpOnly: true, sameSite: "none" });
-    res.status(200).json({success: true, details});
+    res.cookie("accessToken", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
+    res.status(200).json({ success: true, details });
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: error.message });
@@ -33,18 +37,20 @@ export const signUp = async (req, res) => {
     const user = new User({ ...req.body, password: hash });
     const savedUser = await user.save();
     const token = jwt.sign({ id: savedUser._id }, process.env.JWT_KEY);
-    res.cookie("accessToken", token, { httpOnly: true, sameSite: "none" });
-    res.status(201).json({success: true, savedUser});
+    res.cookie("accessToken", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
+    res.status(201).json({ success: true, savedUser });
   } catch (error) {
     if (error.code === 11000) {
       const keyVal = error.keyValue;
-      res
-        .status(400)
-        .json({
-          message: `${
-            keyVal.hasOwnProperty("email") ? "E-mail" : "Name"
-          } is already taken!`,
-        });
+      res.status(400).json({
+        message: `${
+          keyVal.hasOwnProperty("email") ? "E-mail" : "Name"
+        } is already taken!`,
+      });
     } else {
       res.status(400).json({ message: error.message });
     }

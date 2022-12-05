@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const login = async (req, res) => {
-  console.log("Login hit");
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) throw new Error("Your e-mail or password is wrong!");
@@ -25,7 +24,6 @@ export const login = async (req, res) => {
 };
 
 export const signUp = async (req, res) => {
-  console.log("register hit");
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(req.body.password, salt);
   try {

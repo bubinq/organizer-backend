@@ -15,8 +15,7 @@ export const login = async (req, res) => {
     const { password, ...details } = user._doc;
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_KEY);
-    console.log(token, "from login");
-    res.cookie("accessToken", token, { httpOnly: true });
+    res.cookie("accessToken", token, { httpOnly: true, sameSite: "none" });
     res.status(200).json({success: true, details});
   } catch (error) {
     console.log(error.message);
@@ -34,7 +33,7 @@ export const signUp = async (req, res) => {
     const user = new User({ ...req.body, password: hash });
     const savedUser = await user.save();
     const token = jwt.sign({ id: savedUser._id }, process.env.JWT_KEY);
-    res.cookie("accessToken", token, { httpOnly: true });
+    res.cookie("accessToken", token, { httpOnly: true, sameSite: "none" });
     res.status(201).json({success: true, savedUser});
   } catch (error) {
     if (error.code === 11000) {

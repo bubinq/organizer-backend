@@ -19,6 +19,7 @@ async function findNextAvailableDate(date, req, res) {
 export const getGoals = async (req, res) => {
   try {
     const goals = await Goal.find({});
+    console.log(goals);
     res.status(200).json(goals);
   } catch (error) {
     console.log(error.message);

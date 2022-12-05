@@ -24,7 +24,10 @@ const establishConnection = () => {
 };
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://organizer-react-app.onrender.com/",
+  credentials: true
+}));
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/goals", goalRoutes);

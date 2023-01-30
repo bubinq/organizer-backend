@@ -29,7 +29,7 @@ export const login = async (req, res) => {
 
 export const signUp = async (req, res) => {
   const salt = bcrypt.genSaltSync(10);
-  const hash = bcrypt.hashSync(req.body.password, salt);
+  const hash = await bcrypt.hashSync(req.body.password, salt);
   try {
     if (req.body.repass !== req.body.password) {
       throw new Error("Your passwords must match!");
@@ -42,7 +42,7 @@ export const signUp = async (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    res.status(200).json({ success: true, savedUser });
+    res.status(201).json({ success: true, savedUser });
   } catch (error) {
     if (error.code === 11000) {
       const keyVal = error.keyValue;

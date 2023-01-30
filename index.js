@@ -25,6 +25,7 @@ const establishConnection = () => {
 
 app.use(express.json());
 app.use(cors({
+  exposedHeaders: "Set-Cookie",
   origin: "https://organizer-react-app.onrender.com",
   credentials: true
 }));

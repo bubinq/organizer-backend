@@ -42,7 +42,7 @@ export const signUp = async (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    res.status(201).json({ success: true, savedUser });
+    res.status(200).json({ success: true, savedUser });
   } catch (error) {
     if (error.code === 11000) {
       const keyVal = error.keyValue;

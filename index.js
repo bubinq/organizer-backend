@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(cors({
   exposedHeaders: "Set-Cookie",
   origin: "https://organizer-react-app.onrender.com",
-  credentials: true
+  credentials: true,
 }));
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);

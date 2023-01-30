@@ -20,7 +20,7 @@ export const login = async (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    res.status(200).json({ success: true, details });
+    res.status(200).json(details);
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: error.message });
@@ -42,7 +42,7 @@ export const signUp = async (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    res.status(200).json({ success: true, savedUser });
+    res.status(200).json(savedUser);
   } catch (error) {
     if (error.code === 11000) {
       const keyVal = error.keyValue;
